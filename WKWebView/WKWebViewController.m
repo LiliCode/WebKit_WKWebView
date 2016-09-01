@@ -8,7 +8,6 @@
 
 #import "WKWebViewController.h"
 
-
 #define alert(msg) \
 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];\
 [alert show];

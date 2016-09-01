@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2211755C1D7869E60049C86C /* WKWebViewController+PublicMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 2211755B1D7869E60049C86C /* WKWebViewController+PublicMethod.m */; };
 		224780381D703D9900F3F453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 224780371D703D9900F3F453 /* main.m */; };
 		2247803B1D703D9900F3F453 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2247803A1D703D9900F3F453 /* AppDelegate.m */; };
 		2247803E1D703D9900F3F453 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2247803D1D703D9900F3F453 /* ViewController.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2211755A1D7869E60049C86C /* WKWebViewController+PublicMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebViewController+PublicMethod.h"; sourceTree = "<group>"; };
+		2211755B1D7869E60049C86C /* WKWebViewController+PublicMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebViewController+PublicMethod.m"; sourceTree = "<group>"; };
 		224780331D703D9900F3F453 /* WKWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		224780371D703D9900F3F453 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		224780391D703D9900F3F453 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				2247806A1D73D70B00F3F453 /* WKWebView+Extension.m */,
 				22503B871D782FB4009C99B9 /* WKWebViewScriptMessage.h */,
 				22503B881D782FB4009C99B9 /* WKWebViewScriptMessage.m */,
+				2211755A1D7869E60049C86C /* WKWebViewController+PublicMethod.h */,
+				2211755B1D7869E60049C86C /* WKWebViewController+PublicMethod.m */,
 				22503B7B1D7811EE009C99B9 /* WKWebViewController.h */,
 				22503B7C1D7811EE009C99B9 /* WKWebViewController.m */,
 			);
@@ -320,6 +325,7 @@
 				2247803B1D703D9900F3F453 /* AppDelegate.m in Sources */,
 				224780381D703D9900F3F453 /* main.m in Sources */,
 				2247806B1D73D70B00F3F453 /* WKWebView+Extension.m in Sources */,
+				2211755C1D7869E60049C86C /* WKWebViewController+PublicMethod.m in Sources */,
 				22503B861D7819A8009C99B9 /* TestViewController.m in Sources */,
 				22503B7D1D7811EE009C99B9 /* WKWebViewController.m in Sources */,
 			);

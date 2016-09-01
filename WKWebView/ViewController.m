@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "TestViewController.h"
-#import "WKWebViewScriptMessage.h"
+#import "WKWebViewController+PublicMethod.h"
 
 @interface ViewController ()
 
@@ -24,8 +24,10 @@
     [self.webView loadHtmlFile:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
     
     //注册方法
-    [self.webView addScriptMessageHandler:self funcSelector:@selector(func1)];
+//    [self.webView addScriptMessageHandler:self funcSelector:@selector(func1)];
     [self.webView addScriptMessageHandler:self funcSelector:@selector(func:)];
+    
+    [self.webView addScriptMessageHandler:self funcSelector:@selector(userInfo:)];
     
 }
 
@@ -52,8 +54,13 @@
 - (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value selectorName:(NSString *)selName
 {
     //回调js
-    NSString *script = [NSString stringWithFormat:@"ocCallJavaScriptFunction(%@)", value];
-    [self.webView evaluateJavaScript:script completionHandler:nil];
+    NSString *script = [NSString stringWithFormat:@"ocCallJavaScriptFunction(\"%@\")", value];
+    [self.webView evaluateJavaScript:script completionHandler:^(id _Nullable jsValue, NSError * _Nullable error) {
+        if (error)
+        {
+            NSLog(@"JavaScript执行错误：%@", error.userInfo[NSLocalizedDescriptionKey]);
+        }
+    }];
 }
 
 

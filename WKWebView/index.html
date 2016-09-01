@@ -14,7 +14,7 @@
         }
     
         function startFunction1(){
-            window.webkit.messageHandlers.func1.postMessage(null); <!-- 调用iOS -->
+            window.webkit.messageHandlers.userInfo.postMessage('24'); <!-- 调用iOS -->
         }
     
         function ocCallJavaScriptFunction(obj){
@@ -27,7 +27,7 @@
 <br/>
 <h1>OC和JavaScript交互</h1> <br/>
 <button type="button" value="Click" onClick="startFunction(share)" >跳转页面</a>
-<button type="button" value="Click" onClick="startFunction1()" >返回值</a>
+<button type="button" value="Click" onClick="startFunction1()" >用户信息</a>
 
 </body>
 </html>
