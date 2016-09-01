@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type"    content="text/html;charset=UTF-8">
+    <script type="text/javascript">
+
+        var share = JSON.stringify({"title": "Migi000",
+            "desc": "简书",
+            "shareUrl": "http://www.jianshu.com/p/f896d73c670a"
+        });
+        //IOS
+        function startFunction(share){
+            window.android.startFunction(share)//android
+        }
+
+    </script>
+</head>
+<body>
+<br/>
+<h1>OC和JavaScript交互</h1> <br/>
+<input  type="button" value="Click" onClick="startFunction(share)" >传递参数</a>
+
+</body>
+</html>
