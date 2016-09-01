@@ -10,4 +10,12 @@
 
 @interface NSString (JSON)
 
+/**
+ *  json转换成字典
+ *
+ *  @return 返回字典对象
+ */
+- (NSDictionary *)jsonToDictionary;
+
+
 @end

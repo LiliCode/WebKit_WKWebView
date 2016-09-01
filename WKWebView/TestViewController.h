@@ -10,4 +10,6 @@
 
 @interface TestViewController : WKWebViewController
 
+@property (strong , nonatomic) NSDictionary *info;
+
 @end

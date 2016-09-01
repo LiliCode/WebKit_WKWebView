@@ -4,21 +4,30 @@
     <meta http-equiv="Content-Type"    content="text/html;charset=UTF-8">
     <script type="text/javascript">
 
-        var share = JSON.stringify({"title": "Migi000",
-            "desc": "简书",
-            "shareUrl": "http://www.jianshu.com/p/f896d73c670a"
+        var share = JSON.stringify({"title": "简书",
+            "url": "http://www.jianshu.com/p/f896d73c670a"
         });
+        
         //IOS
         function startFunction(share){
-            window.android.startFunction(share)//android
+            window.webkit.messageHandlers.func.postMessage(share); <!-- 调用iOS -->
         }
-
+    
+        function startFunction1(){
+            window.webkit.messageHandlers.func1.postMessage(null); <!-- 调用iOS -->
+        }
+    
+        function ocCallJavaScriptFunction(obj){
+            alert(obj);
+        }
+    
     </script>
 </head>
 <body>
 <br/>
 <h1>OC和JavaScript交互</h1> <br/>
-<input  type="button" value="Click" onClick="startFunction(share)" >传递参数</a>
+<button type="button" value="Click" onClick="startFunction(share)" >跳转页面</a>
+<button type="button" value="Click" onClick="startFunction1()" >返回值</a>
 
 </body>
 </html>

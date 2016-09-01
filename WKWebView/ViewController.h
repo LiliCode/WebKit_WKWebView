@@ -6,9 +6,9 @@
 //  Copyright © 2016年 LiliEhuu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WKWebViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : WKWebViewController
 
 
 @end

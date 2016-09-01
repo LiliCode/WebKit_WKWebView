@@ -7,7 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebProgressView.h"
+#import "NSString+JSON.h"
 
-@interface WKWebViewController : UIViewController
+#define VIRTUAL_FUNC
+
+@protocol OCReturnValueDelegate <NSObject>
+
+@optional
+/**
+ *  接收到OC方法返回值的虚函数
+ *
+ *  @param webView 当前WebView
+ *  @param value   OC方法的返回值
+ */
+VIRTUAL_FUNC - (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value;
+
+@end
+
+@interface WKWebViewController : UIViewController<WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate, OCReturnValueDelegate>
+
+@property (strong , nonatomic , readonly) WKWebView *webView;
+
+
 
 @end
