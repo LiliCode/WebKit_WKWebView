@@ -24,6 +24,13 @@
  */
 VIRTUAL_FUNC - (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value selectorName:(NSString *)selName;
 
+/**
+ *  添加公共的消息处理这虚函数
+ *
+ *  @return 返回 void
+ */
+VIRTUAL_FUNC - (void)addPublicScriptMessageHandlers;
+
 @end
 
 @interface WKWebViewController : UIViewController<WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate, OCReturnValueDelegate>

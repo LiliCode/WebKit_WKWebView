@@ -49,6 +49,12 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate
 - (void)loadInterface
 {
     [self.view addSubview:self.wkWebView];
+    
+    //执行添加公共方法虚函数
+    if ([self respondsToSelector:@selector(addPublicScriptMessageHandlers)])
+    {
+        [self addPublicScriptMessageHandlers];
+    }
 }
 
 
@@ -203,6 +209,11 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate
     
 }
 
+- (void)dealloc
+{
+    //删除注入的所有消息处理者
+    [self.webView removeAllScriptMessageHandler];
+}
 
 #pragma mark - Navigation
 

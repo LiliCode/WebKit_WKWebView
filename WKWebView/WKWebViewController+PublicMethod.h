@@ -11,6 +11,5 @@
 @interface WKWebViewController (PublicMethod)
 
 
-- (NSString *)userInfo:(id)json;
 
 @end
