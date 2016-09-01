@@ -8,12 +8,21 @@
 
 #import "WKWebView+Extension.h"
 #import "WKWebViewScriptMessage.h"
+#import <objc/runtime.h>
+
+
+@interface WKWebView ()
+@property (strong , nonatomic) NSMutableArray *methodList;  //oc方法列表
+
+@end
+
 
 @implementation WKWebView (Extension)
 
-
 + (instancetype)webViewWithFrame:(CGRect)frame
 {
+    //创建方法列表
+    
     //配置
     WKWebViewConfiguration *cfg = [[WKWebViewConfiguration alloc] init];
     cfg.preferences.javaScriptEnabled = YES;        //允许JavaScript交互
@@ -97,11 +106,17 @@
 
 - (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler funcSelector:(SEL)selector
 {
+    //初始化方法列表
+    if (!self.methodList)
+    {
+        self.methodList = [NSMutableArray new];
+    }
+    
     //获取方法名称
     NSString *methodName = NSStringFromSelector(selector);
     //去除 ":"
     NSRange range = [methodName rangeOfString:@":"];
-    if (range.length)
+    if (range.location < methodName.length)
     {
         NSMutableString *mString = [methodName mutableCopy];
         [mString deleteCharactersInRange:range];
@@ -110,10 +125,36 @@
     
     //注册方法
     WKWebViewScriptMessage *scriptMesaage = [WKWebViewScriptMessage webViewScriptMessageWithDelegate:scriptMessageHandler];
-    [self.configuration.userContentController addScriptMessageHandler:scriptMesaage name:NSStringFromSelector(selector)];
+    [self.configuration.userContentController addScriptMessageHandler:scriptMesaage name:methodName];
+    
+    //添加到方法列表
+    [self.methodList addObject:methodName];
 }
 
 
+- (void)removeAllScriptMessageHandler
+{
+    for (NSString *methodName in self.methodList)
+    {
+        //在webView中删除插入的oc方法
+        [self.configuration.userContentController removeScriptMessageHandlerForName:methodName];
+    }
+    
+    //删除方法列表中的全部方法
+    [self.methodList removeAllObjects];
+}
+
+static char *methodListKey = "methodListKey";
+
+- (void)setMethodList:(NSMutableArray *)methodList
+{
+    objc_setAssociatedObject(self, &methodListKey, methodList, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableArray *)methodList
+{
+    return objc_getAssociatedObject(self, &methodListKey);
+}
 
 @end
 

@@ -49,6 +49,11 @@
  */
 - (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler funcSelector:(SEL)selector;
 
+/**
+ *  删除全部消息处理
+ */
+- (void)removeAllScriptMessageHandler;
+
 
 @end
 

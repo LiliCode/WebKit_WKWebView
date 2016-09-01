@@ -172,9 +172,9 @@ UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:msg delegate
             //方法有返回值
             id returnValue = [self performSelector:sel withObject:message.body];
             
-            if ([self respondsToSelector:@selector(webView:didReceiveOCMethodReturnValue:)])
+            if ([self respondsToSelector:@selector(webView:didReceiveOCMethodReturnValue:selectorName:)])
             {
-                [self webView:self.webView didReceiveOCMethodReturnValue:returnValue];  //执行虚函数
+                [self webView:self.webView didReceiveOCMethodReturnValue:returnValue selectorName:message.name];  //执行虚函数
             }
         }
     }

@@ -20,8 +20,9 @@
  *
  *  @param webView 当前WebView
  *  @param value   OC方法的返回值
+ *  @param selName 返回值的选择器名称
  */
-VIRTUAL_FUNC - (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value;
+VIRTUAL_FUNC - (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value selectorName:(NSString *)selName;
 
 @end
 

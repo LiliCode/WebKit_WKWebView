@@ -24,14 +24,9 @@
     [self.webView loadHtmlFile:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"]];
     
     //注册方法
-//    WKWebViewScriptMessage *scriptMesaage = [WKWebViewScriptMessage webViewScriptMessageWithDelegate:self];
-//    [self.webView.configuration.userContentController addScriptMessageHandler:scriptMesaage name:@"func"];
-//    [self.webView.configuration.userContentController addScriptMessageHandler:scriptMesaage name:@"func1"];
-    
     [self.webView addScriptMessageHandler:self funcSelector:@selector(func1)];
     [self.webView addScriptMessageHandler:self funcSelector:@selector(func:)];
     
-    NSLog(@"方法字符串：%@", NSStringFromSelector(@selector(func:)));
 }
 
 
@@ -41,7 +36,7 @@
 }
 
 
-- (void)func:(NSString *)json
+- (void)func:(id)json
 {
     NSDictionary *info = [json jsonToDictionary];
     
@@ -54,7 +49,7 @@
 }
 
 
-- (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value
+- (void)webView:(WKWebView *)webView didReceiveOCMethodReturnValue:(id)value selectorName:(NSString *)selName
 {
     //回调js
     NSString *script = [NSString stringWithFormat:@"ocCallJavaScriptFunction(%@)", value];
@@ -72,9 +67,8 @@
 - (void)dealloc
 {
     NSLog(@"释放了第一个页面");
-    
-    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"func"];
-    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"func1"];
+    //删除全部消息处理者
+    [self.webView removeAllScriptMessageHandler];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
